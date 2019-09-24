@@ -1,0 +1,90 @@
+package RetailExample;
+
+import RetailExample.RetailItem;
+import RetailExample.CompactDisc;
+import RetailExample.DvdMovie;
+import java.text.DecimalFormat;
+
+/**
+   This program demonstrates that an interface type may
+   be used to create a polymorphic reference.
+*/
+
+public class PolymorphicInterfaceDemo
+{
+//   public static void main(String[] args)  // version A - using polymorphism
+//   {
+//      // Create a CompactDisc object.
+//      CompactDisc cd =
+//              new CompactDisc("Greatest Hits",
+//                              "Joe Looney Band",
+//                              18.95);
+//      // Create a DvdMovie object.
+//      DvdMovie movie =
+//              new DvdMovie("Wheels of Fury",
+//                           137, 12.95);
+//
+//      // Display the CD's title.                      
+//      System.out.println("Item #1: " +
+//                         cd.getTitle());
+//                         
+//      // Display the CD's price.
+//      showPrice(cd);
+//      
+//      // Display the DVD's title.
+//      System.out.println("Item #2: " +
+//                         movie.getTitle());
+//                         
+//      // Display the DVD's price.
+//      showPrice(movie);
+//   }
+    
+       /**
+      The showPrice method displays the price
+      of a RetailItem object.
+      @param item A reference to a RetailItem object.
+   */
+   
+//   private static void showPrice(RetailItem item)
+//   {
+//      DecimalFormat dollar =
+//                       new DecimalFormat("#,##.00");
+//    
+//      System.out.println("Price: $" +
+//             dollar.format(item.getRetailPrice()));
+//   }
+   
+   public static void main(String[] args) //version B - using an array of interface type, for polymorphism
+   {
+       RetailItem[] myItems = new RetailItem[2];
+      // Create a CompactDisc object.
+      CompactDisc cd =
+              new CompactDisc("Greatest Hits",
+                              "Joe Looney Band",
+                              18.95);
+      // Create a DvdMovie object.
+      DvdMovie movie =
+              new DvdMovie("Wheels of Fury",
+                           137, 12.95);
+
+      // Display the CD's title.                      
+      System.out.println("Item #1: " +
+                         cd.getTitle());
+      myItems[0] = cd;
+      myItems[1] = movie;
+      
+      DecimalFormat dollar =
+                       new DecimalFormat("#,##.00");
+    
+      
+      for (int i = 0; i < 2; i++)
+      {
+          
+         System.out.println("Price: $" + dollar.format(myItems[i].getRetailPrice()));
+      }
+      
+     
+   }
+
+
+}
